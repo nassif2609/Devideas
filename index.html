@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" style="font-family:sans-serif;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Problems</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <p>This is a community where people can share the problems they are facing, so that it can help developers build a solution in the form of a web app or mobile app</p>
+    <br><Br>
+    <form action="addproblems.php" method="POST">
+        <select name="options"  required>
+            <option value="">--Select an option--</option>
+            <option>Travel</option>
+            <option>Education</option>
+            <option>Social Networking</option>
+             <option>Communication</option>
+              <option>Productivity</option>
+               <option>Health and Fitness</option>
+                <option>Finance</option>
+                <option>Entertainment</option>
+             <option>Shopping</option>
+              <option>Travel</option>
+               <option>Gaming</option>
+                <option>Utilities</option>
+<option>News and Magazines</option>
+             <option>Photography and Video</option>
+              <option>Food and Drink</option>
+               <option>Real Estate</option>
+                <option>Weather</option>
+                 <option>Books and Reference</option>
+                 </select>
+                 <br><br>
+               
+
+        <textarea name="problem" placeholder="Share your problem...." style="width:700px; height:100px; font-size:14px; padding-left:10px;padding-top:10px; font-family:sans-serif;border-color:lightgray;" required  ></textarea>
+        <br><br>
+        <button type="submit" style=" border:none; width:200px;height:50px;background-color:turquoise;color:grey;font-size:15px;">Submit</button>
+    </form>
+    <br><br>
+    <form action="filter.php" method="POST" id="filterForm"> 
+    <select name="filter"  required>
+         <option value="">--Select an option--</option>
+            <option value="Travel">Travel</option>
+            <option value="Education">Education</option>
+            <option value="Social Networking">Social Networking</option>
+             <option value="Communication">Communication</option>
+              <option value="Productivity">Productivity</option>
+               <option value="Health and Fitness">Health and Fitness</option>
+                <option value="Finance">Finance</option>
+                <option value="Entertainment">Entertainment</option>
+             <option value="Shopping">Shopping</option>
+              <option value="Travel">Travel</option>
+               <option value="Gaming">Gaming</option>
+                <option value="Utilities">Utilities</option>
+                 <option value="News and Magazines">News and Magazines</option>
+             <option value="Photography and Video">Photography and Video</option>
+              <option value="Food and Drink">Food and Drink</option>
+               <option value="Real Estate">Real Estate</option>
+                <option value="Weather">Weather</option>
+                 <option value="Books and Reference">Books and Reference</option>
+                 </select>
+        </select>
+        <button>Filter</button>
+       
+        </form>
+    <div id="problemslist" style="font-size:14px;" ></div>
+    <script>
+        const problemslist = document.getElementById("problemslist");
+        const filterForm=document.getElementById("filterForm");
+        fetch("getproblems.php")
+            .then(response => response.json())
+            .then(data => {
+                problemslist.innerHTML =data.map(individualproblems => individualproblems.problems).join("<hr>");
+            });
+        
+         
+        filterForm.addEventListener("submit",function(event){
+            event.preventDefault();
+      
+        const formdata = new FormData(filterForm);
+
+        fetch("filter.php",{
+            method:"POST",
+          
+            body:formdata
+        })
+        .then(response => response.json())
+        .then(filtereddata => {
+            problemslist.innerHTML = filtereddata.map(info => info.problems).join("<hr>");
+        });
+        });
+
+    
+      
+       
+        
+   
+   
+    </script>
+    
+</body>
+</html>
