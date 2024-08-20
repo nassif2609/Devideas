@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Problems</title>
-    <link href="styles.css" rel="stylesheet">
+    <title>Devideas</title>
+    
 </head>
 <body>
-    <p>This is a community where people can share the problems they are facing, so that it can help developers build a solution in the form of a web app or mobile app</p>
+    <p>This is a platform where users can share their app ideas, and developers can discover what apps users want so that they can build them.</p>
     <br><Br>
-    <form action="addproblems.php" method="POST">
+    <form action="addideas.php" method="POST">
         <select name="options"  required>
             <option value="">--Select an option--</option>
             <option>Travel</option>
@@ -34,7 +34,7 @@
                  <br><br>
                
 
-        <textarea name="problem" placeholder="Share your problem...." style="width:700px; height:100px; font-size:14px; padding-left:10px;padding-top:10px; font-family:sans-serif;border-color:lightgray;" required  ></textarea>
+        <textarea name="userappidea" placeholder="Share your problem...." style="width:700px; height:100px; font-size:14px; padding-left:10px;padding-top:10px; font-family:sans-serif;border-color:lightgray;" required  ></textarea>
         <br><br>
         <button type="submit" style=" border:none; width:200px;height:50px;background-color:turquoise;color:grey;font-size:15px;">Submit</button>
     </form>
@@ -69,10 +69,10 @@
     <script>
         const problemslist = document.getElementById("problemslist");
         const filterForm=document.getElementById("filterForm");
-        fetch("getproblems.php")
+        fetch("retrieveideas.php")
             .then(response => response.json())
             .then(data => {
-                problemslist.innerHTML =data.map(individualproblems => individualproblems.problems).join("<hr>");
+                problemslist.innerHTML =data.map(individualproblems => individualproblems.appideas).join("<hr>");
             });
         
          
@@ -88,17 +88,9 @@
         })
         .then(response => response.json())
         .then(filtereddata => {
-            problemslist.innerHTML = filtereddata.map(info => info.problems).join("<hr>");
+            problemslist.innerHTML = filtereddata.map(info => info.appideas).join("<hr>");
         });
         });
-
-    
-      
-       
-        
-   
-   
-    </script>
-    
+</script>
 </body>
 </html>
