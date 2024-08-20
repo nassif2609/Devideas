@@ -2,7 +2,7 @@
  
 require "database.php";
 
-$capture=$pdo->prepare("SELECT problems FROM problemsforSAAS");
+$capture=$pdo->prepare("SELECT appideas FROM App_ideas_table");
 $capture->execute();
 
 $display=$capture->fetchAll(PDO::FETCH_ASSOC);
