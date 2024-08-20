@@ -1,12 +1,5 @@
 <?php
- 
-require "database.php";
 
-$capture=$pdo->prepare("SELECT problems FROM problemsforSAAS");
-$capture->execute();
-
-$display=$capture->fetchAll(PDO::FETCH_ASSOC);
-
-echo json_encode($display);
+$pdo=new pdo("mysql:dbname=if0_37143728_appideasdatabase;host=sql110.infinityfree.com","if0_37143728","V9cZFLVNKuT1Z");
 
 ?>
