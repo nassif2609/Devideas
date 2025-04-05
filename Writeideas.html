@@ -1,0 +1,64 @@
+<html style="font-family:segoe ui">
+    <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N3EYFGW5M3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N3EYFGW5M3');
+</script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <style>
+    @media(max-width: 767px) {
+                img{
+                   width:50px !important;
+                   height:50px !important;
+                   margin-top:27px !important;
+                    
+               }
+                label{
+                   height:90px !important;
+                  
+               }
+                form{
+                   margin-top:50px;
+                   margin-left:-155px;
+               }
+                textarea{
+                  width:350px !important;
+                  
+               }
+            }
+        @media (max-width: 1024px) and (orientation: landscape) {
+              textarea{
+                  width:500px !important;
+              }
+              #ideaform{
+                  margin-left:-30px;
+              }
+
+            }
+     </style>
+          
+     <title>Croidea</title>
+        <label  style="display:inline-flex;background-color:white;margin-top:-120px;width:1280px;margin-left:-10px;border-bottom:1px solid lightgray;position:fixed;height:90px">
+             <a href="index.html" style="text-decoration:none;color:black;"><img src="home icon.jpg" id="logo" style="margin-top:35px;height:40px;width:40px;margin-left:40px;margin-bottom:30px;"></a>
+        </label>
+        </head>
+    <body style="background-color:#f7f7f8">
+    <div style="margin-left:170px;margin-top:100px" >
+          
+     
+         <form id="ideaForm" action="addideas.php" method="POST">
+              <h2 >Share an app idea</h2>
+            <textarea name="appideas" placeholder=" Share an app idea that you truly want to see..." style="width:700px; height:150px; font-size:14px; padding-left:5px; padding-top:10px; border-color:lightgray;border-radius:20px;resize:none;font-family:segoe ui;font-size:15px" minlength="30" required></textarea>
+            <br><br>
+            
+            <button type="submit" style="border:none;height:40px;width:153px;border-radius:30px;font-size:14px;cursor:pointer;margin-top:20px;color:white;background-color:OliveDrab;font-family:segoe ui">Submit</button>
+        </form>
+        </div>
+        
+    </body>
+</html>
