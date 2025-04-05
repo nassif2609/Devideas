@@ -1,96 +1,254 @@
 <!DOCTYPE html>
-<html lang="en" style="font-family:sans-serif;">
+<html lang="en" style="overflow-x:hidden;font-family:segoe ui;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devideas</title>
-    
+    <title>Croidea</title>
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f7f8;
+            padding-top: 90px;  /* Increased to accommodate larger header */
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 15px 30px;  /* Increased padding */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid lightgray;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 32px;  /* Increased from 24px */
+        }
+
+        .logo h1:first-child {
+            color: OliveDrab;
+        }
+
+        .write-button {
+            border: none;
+            height: 48px;  /* Increased from 40px */
+            padding: 0 30px;  /* Increased padding */
+            border-radius: 35px;
+            font-size: 16px;  /* Increased from 14px */
+            cursor: pointer;
+            color: white;
+            background-color: OliveDrab;
+            font-family: segoe ui;
+            font-weight: 500;  /* Added slight bold */
+        }
+
+        .ideas-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .idea-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 16px;
+            border: 1px solid lightgray;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .action-button {
+            padding: 5px 10px;
+            background-color: OliveDrab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .links-container {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid lightgray;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                padding-top: 80px;
+            }
+
+            .header {
+                padding: 12px 15px;
+            }
+
+            .logo h1 {
+                font-size: 28px;  /* Adjusted for mobile but still larger than original */
+            }
+
+            .write-button {
+                height: 44px;  /* Slightly smaller on mobile but still larger than original */
+                padding: 0 20px;
+                font-size: 15px;
+            }
+
+            .ideas-container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .tooltip .tooltiptext {
+                width: 150px;
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>This is a platform where users can share their app ideas, and developers can discover what apps users want so that they can build them.</p>
-    <br><Br>
-    <form action="addideas.php" method="POST">
-        <select name="options"  required>
-            <option value="">--Select an option--</option>
-            <option>Travel</option>
-            <option>Education</option>
-            <option>Social Networking</option>
-             <option>Communication</option>
-              <option>Productivity</option>
-               <option>Health and Fitness</option>
-                <option>Finance</option>
-                <option>Entertainment</option>
-             <option>Shopping</option>
-              <option>Travel</option>
-               <option>Gaming</option>
-                <option>Utilities</option>
-<option>News and Magazines</option>
-             <option>Photography and Video</option>
-              <option>Food and Drink</option>
-               <option>Real Estate</option>
-                <option>Weather</option>
-                 <option>Books and Reference</option>
-                 </select>
-                 <br><br>
-               
+    <header class="header">
+        <div class="logo">
+            <h1>Cro</h1>
+            <h1>idea</h1>
+        </div>
+        <a href="Writeideas.html" style="text-decoration:none;">
+            <button class="write-button">Write an Idea</button>
+        </a>
+    </header>
 
-        <textarea name="userappidea" placeholder="Share your problem...." style="width:700px; height:100px; font-size:14px; padding-left:10px;padding-top:10px; font-family:sans-serif;border-color:lightgray;" required  ></textarea>
-        <br><br>
-        <button type="submit" style=" border:none; width:200px;height:50px;background-color:turquoise;color:grey;font-size:15px;">Submit</button>
-    </form>
-    <br><br>
-    <form action="filter.php" method="POST" id="filterForm"> 
-    <select name="filter"  required>
-         <option value="">--Select an option--</option>
-            <option value="Travel">Travel</option>
-            <option value="Education">Education</option>
-            <option value="Social Networking">Social Networking</option>
-             <option value="Communication">Communication</option>
-              <option value="Productivity">Productivity</option>
-               <option value="Health and Fitness">Health and Fitness</option>
-                <option value="Finance">Finance</option>
-                <option value="Entertainment">Entertainment</option>
-             <option value="Shopping">Shopping</option>
-              <option value="Travel">Travel</option>
-               <option value="Gaming">Gaming</option>
-                <option value="Utilities">Utilities</option>
-                 <option value="News and Magazines">News and Magazines</option>
-             <option value="Photography and Video">Photography and Video</option>
-              <option value="Food and Drink">Food and Drink</option>
-               <option value="Real Estate">Real Estate</option>
-                <option value="Weather">Weather</option>
-                 <option value="Books and Reference">Books and Reference</option>
-                 </select>
-        </select>
-        <button>Filter</button>
-       
-        </form>
-    <div id="problemslist" style="font-size:14px;" ></div>
+    <div id="ideaslist" class="ideas-container"></div>
+
     <script>
-        const problemslist = document.getElementById("problemslist");
-        const filterForm=document.getElementById("filterForm");
+        const ideaslist = document.getElementById("ideaslist");
+
         fetch("retrieveideas.php")
             .then(response => response.json())
             .then(data => {
-                problemslist.innerHTML =data.map(individualproblems => individualproblems.appideas).join("<hr>");
+                if (data.length > 0) {
+                    ideaslist.innerHTML = data.map(individualproblems => `
+                        <div class="idea-card">
+                            <strong style="color:CornflowerBlue">Idea:</strong> ${individualproblems.appideas}<br><br>
+                            <div id="links-container-${individualproblems.no}" class="links-container" style="display:none;">
+                                <strong>Links:</strong>
+                                <div class="links" style="margin-top:10px;"></div>
+                            </div>
+                            <div class="button-container">
+                                <div class="tooltip">
+                                    <button class="view-links action-button" data-idea-no="${individualproblems.no}">
+                                        View Links
+                                    </button>
+                                    <span class="tooltiptext">View links added by developers for this idea.</span>
+                                </div>
+                                <div class="tooltip">
+                                    <button class="write-link action-button" data-idea-no="${individualproblems.no}">
+                                        Add Link
+                                    </button>
+                                    <span class="tooltiptext">Add links to the apps or websites you have developed based on this idea.</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join("");
+                } else {
+                    ideaslist.innerHTML = "<p style='text-align:center;width:100%;'>There are no ideas available</p>";
+                }
             });
-        
-         
-        filterForm.addEventListener("submit",function(event){
-            event.preventDefault();
-      
-        const formdata = new FormData(filterForm);
 
-        fetch("filter.php",{
-            method:"POST",
-          
-            body:formdata
-        })
-        .then(response => response.json())
-        .then(filtereddata => {
-            problemslist.innerHTML = filtereddata.map(info => info.appideas).join("<hr>");
+        function isValidURL(string) {
+            const urlRegex = /^(https?:\/\/)?([\w.-]+)+(:\d+)?(\/[\w._~:/?#[\]@!$&'()*+,;=]*)?$/;
+            return urlRegex.test(string);
+        }
+
+        document.addEventListener('click', function(event) {
+            if (event.target.matches('.view-links')) {
+                const ideaNo = event.target.dataset.ideaNo;
+                const linksContainer = document.querySelector(`#links-container-${ideaNo}`);
+                
+                if (linksContainer.style.display === "none") {
+                    fetch(`viewlinks.php?ideaNo=${ideaNo}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const linksDiv = linksContainer.querySelector(".links");
+                            linksDiv.innerHTML = data.error
+                                ? `<p style="color:red;">${data.error}</p>`
+                                : data.length > 0
+                                    ? data.map(link => 
+                                        `<a href="${link}" style="display:block;margin:5px 0;color:CornflowerBlue;text-decoration:underline;word-break:break-all;">${link}</a>`
+                                      ).join("")
+                                    : "<p>No links available.</p>";
+                            linksContainer.style.display = "block";
+                        });
+                } else {
+                    linksContainer.style.display = "none";
+                }
+            }
+
+            if (event.target.matches('.write-link')) {
+                const ideaNo = event.target.dataset.ideaNo;
+                const appLink = prompt("Enter the link (only valid URLs are accepted):");
+                if (appLink && isValidURL(appLink)) {
+                    fetch('addlink.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ ideaNo, appLink })
+                    })
+                        .then(response => response.json())
+                        .then(data => alert(data.error || data.message));
+                } else if (appLink) {
+                    alert("Please enter a valid URL.");
+                }
+            }
         });
-        });
-</script>
+    </script>
 </body>
 </html>
